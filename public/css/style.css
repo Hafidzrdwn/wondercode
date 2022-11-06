@@ -42,7 +42,7 @@ a.dropdown-item:hover {
   border: none;
   color: #fff;
   padding: 10px 30px;
-  border-radius: 5px;
+  border-radius: 5px !important;
 }
 
 .btn.btn-web-primary:hover {
@@ -55,7 +55,7 @@ a.dropdown-item:hover {
   border: 1px solid #21caa2;
   color: #21caa2;
   padding: 10px 30px;
-  border-radius: 5px;
+  border-radius: 5px !important;
 }
 
 .btn.btn-web-outline-primary:hover {
@@ -72,7 +72,7 @@ a.dropdown-item:hover {
   justify-content: center;
 }
 
-.search-box:hover {
+.search-box.show {
   background: #21caa2;
 }
 
@@ -88,31 +88,90 @@ a.dropdown-item:hover {
   line-height: 40px;
 }
 
-.search-box:hover .search-input {
+.search-box.show > .search-input {
   width: 265px;
-  padding: 0 7px;
+  padding: 0 7px 0 10px;
 }
 
-.search-box:hover > .searchButton {
+.search-box.show > .search-btn {
   background: white !important;  
 }
 
-.searchButton {
+.search-btn {
   width: 34px;
   height: 34px;
   border-radius: 50%;
   transition: 0.4s all ease;
 }
 
-.searchButton > img {
+.search-btn > img {
   width: 27px;
   height: 27px;
+  pointer-events: none;
 }
 
+.fas.fa-times {
+  pointer-events: none;
+}
+
+
+@media screen and (max-width: 992px) {
+
+  .navbar-collapse {
+    margin-top: 12px !important;
+  }
+
+  .search-box {
+    background: #21caa2;
+    margin: 15px 0 20px;
+    justify-content: space-between;
+  }  
+
+  .search-btn {
+    background: white !important;  
+  }
+
+  .search-btn > img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0 7px 0 10px;
+  }
+
+  .btn-group {
+    width: 100% !important;
+  }
+  #btn-login {
+    margin:0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  #btn-register {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
+}
 
 @media screen and (max-width: 620px) {
-.search-box:hover > .search-input {
-    width: 150px;
-    padding: 0 6px;
-}
+  .search-box.show > .search-input {
+      width: 150px;
+      padding: 0 6px;
+  }
+
+  .btn-group {
+    display: block !important;
+  }
+
+  #btn-login, #btn-register {
+    width: 100% !important;
+    border-radius: 5px !important;
+  }
+
+  #btn-login {
+    margin-bottom: 10px !important;
+  }
 }

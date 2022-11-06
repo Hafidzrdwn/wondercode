@@ -44,13 +44,15 @@
         </li>
       </ul>
       <div class="search-box">
-        <input class="search-input" type="text" name="" placeholder="Search">
-        <button class="searchButton" href="#" style="border: none; background: transparent;">
-          <img src="{{ asset('assets/images/search.svg') }}" alt="search-image">
+        <input class="search-input" type="text" name="" placeholder="Search" autocomplete="off">
+        <button class="search-btn" href="#" style="border: none; background: transparent;">
+          <img src="{{ asset('assets/images/search.svg') }}" alt="search-image" id="img-search">
         </button>
       </div>
-      <a href="" class="ms-4 me-3 btn btn-web-outline-primary">Masuk</a>
-      <a href="" class="btn btn-web-primary">Daftar</a>
+      <div class="btn-group">
+        <a href="" id="btn-login" class="ms-4 me-3 btn btn-web-outline-primary">Masuk</a>
+        <a href="" id="btn-register" class="btn btn-web-primary">Daftar</a>
+      </div>
     </div>
   </div>
 </nav>
