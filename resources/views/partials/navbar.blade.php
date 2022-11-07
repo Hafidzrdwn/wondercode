@@ -44,7 +44,7 @@
         </li>
       </ul>
       <div class="search-box">
-        <input class="search-input" type="text" name="" placeholder="Search" autocomplete="off">
+        <input class="search-input" type="text" name="" placeholder="Cari apa saja.." autocomplete="off">
         <button class="search-btn" href="#" style="border: none; background: transparent;">
           <img src="{{ asset('assets/images/search.svg') }}" alt="search-image" id="img-search">
         </button>
