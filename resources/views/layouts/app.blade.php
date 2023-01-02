@@ -14,9 +14,7 @@
 
   @include('partials.navbar')
 
-  <div class="container">
-    @yield('content')
-  </div>
+  @yield('content')
 
   @include('partials.script')
   @yield('script')

@@ -102,6 +102,8 @@ a.dropdown-item:hover {
   height: 34px;
   border-radius: 50%;
   transition: 0.4s all ease;
+  border: none;
+  background: transparent;
 }
 
 .search-btn > img {
@@ -112,6 +114,16 @@ a.dropdown-item:hover {
 
 .fas.fa-times {
   pointer-events: none;
+}
+
+/* AUTH */
+#loginHero {
+  background: url('../img/login-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: calc(100vh - 93px);
+  position: relative;
 }
 
 

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img class="w-25" src="{{ asset('assets/images/logo-web.png') }}" alt="">
+      <img width="75" class="me-5" src="{{ asset('assets/images/logo-web.png') }}" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -45,12 +45,12 @@
       </ul>
       <div class="search-box">
         <input class="search-input" type="text" name="" placeholder="Cari apa saja..." autocomplete="off">
-        <button class="search-btn" href="#" style="border: none; background: transparent;">
+        <button class="search-btn" href="#">
           <img src="{{ asset('assets/images/search.svg') }}" alt="search-image" id="img-search">
         </button>
       </div>
       <div class="btn-group">
-        <a href="" id="btn-login" class="ms-4 me-3 btn btn-web-outline-primary">Masuk</a>
+        <a href="{{ route('login') }}" id="btn-login" class="ms-4 me-3 btn btn-web-outline-primary">Masuk</a>
         <a href="" id="btn-register" class="btn btn-web-primary">Daftar</a>
       </div>
     </div>
