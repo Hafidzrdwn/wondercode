@@ -53,9 +53,9 @@ a.dropdown-item:hover {
   border-radius: 50px !important;
 }
 
-.btn.btn-web-primary:hover {
-  background-color: #24ba97;
-  color: #fff;
+.btn.btn-web-primary:hover, .btn.btn-web-primary:active, .btn.btn-web-outline-primary:hover, .btn.btn-web-outline-primary:active {
+  background-color: #24ba97 !important;
+  color: #fff !important;
 }
 
 .btn.btn-web-outline-primary {
@@ -64,11 +64,6 @@ a.dropdown-item:hover {
   color: #21caa2;
   padding: 10px 30px;
   border-radius: 5px !important;
-}
-
-.btn.btn-web-outline-primary:hover {
-  background-color: #24ba97;
-  color: #fff;
 }
 
 .search-box {
