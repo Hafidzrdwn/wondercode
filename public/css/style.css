@@ -4,6 +4,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.text-web-primary {
+  color: #21caa2 !important;
+}
+
 nav.navbar {
   border-bottom: 3px solid #f58d50;
   padding: 15px 0 !important;
@@ -43,6 +47,10 @@ a.dropdown-item:hover {
   color: #fff;
   padding: 10px 30px;
   border-radius: 5px !important;
+}
+
+.btn.btn-web-primary.rounded-pill {
+  border-radius: 50px !important;
 }
 
 .btn.btn-web-primary:hover {
@@ -118,12 +126,66 @@ a.dropdown-item:hover {
 
 /* AUTH */
 #loginHero {
-  background: url('../img/login-hero.jpg');
+  width: 100%;
+  height: 100vh;
+  background-image: url('../assets/images/login-bg.webp');
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  height: calc(100vh - 93px);
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+#loginHero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .78);
+  z-index: 1;
+}
+
+.login-box {
+  z-index: 2;
+  background-color: white;
+  width: 440px;
+  height: auto;
+  padding: 22px 40px;
+  border-radius: 8px;
+}
+
+#showHidePass {
+  top: 60%;
+  right: 12px;
+  color: #343a40;
+  cursor: pointer;
+}
+
+.login-or::before, .login-or::after {
+  border-top: 1px solid #c8d0d6;
+  content: '';
+  flex: 1;
+}
+
+.login-or::before {
+  margin-right: 16px;
+}
+.login-or::after {
+  margin-left: 16px;
+}
+
+.form-label {
+  color: #343a40 !important;
+}
+
+.form-control {
+  padding: 10px 16px !important;
+  font-size: 15px !important;
+  background-color: #f9fcff !important;
 }
 
 
