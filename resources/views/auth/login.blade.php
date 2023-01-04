@@ -2,18 +2,19 @@
 
 @section('content')
 <section id="loginHero">
-  <div class="login-box">
+  <div class="auth-box login-box">
     <a href="{{ route('home') }}">
-      <img src="{{ asset('assets/images/logo-web.png') }}" alt="" width="100" class="d-block mx-auto">
+      <img src="{{ asset('assets/images/logo-web.png') }}" alt="logo web" width="100" class="d-block mx-auto">
     </a>
     <form action="" class="mt-5">
       <div class="form-group mb-3">
         <label for="email" class="form-label fw-bold">Username or email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Username or email">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Username atau email">
       </div>
       <div class="form-group mb-3 position-relative">
         <label for="password" class="form-label fw-bold">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter at least 6 characters">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan setidaknya 6 karakter">
+
         <i id="showHidePass" class="fas fa-eye position-absolute fs-5"></i>
       </div>
       <div class="form-check mb-3">
@@ -45,29 +46,9 @@
         </a>
       </div>
       <p class="small text-center text-secondary m-0">Belum memiliki akun?
-        <a href="" class="text-web-primary text-decoration-none">Daftar</a>
+        <a href="{{ route('register') }}" class="text-web-primary">Daftar</a>
       </p>
     </form>
   </div>
 </section>
-@endsection
-
-@section('script')
-<script>
-  const showHidePass = document.getElementById('showHidePass');
-  const password = document.getElementById('password');
-
-  showHidePass.addEventListener('click', () => {
-    if (password.type === 'password') {
-      password.type = 'text';
-      showHidePass.classList.remove('fa-eye');
-      showHidePass.classList.add('fa-eye-slash');
-    } else {
-      password.type = 'password';
-      showHidePass.classList.remove('fa-eye-slash');
-      showHidePass.classList.add('fa-eye');
-    }
-  });
-
-</script>
 @endsection

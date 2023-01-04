@@ -51,7 +51,7 @@
       </div>
       <div class="btn-group">
         <a href="{{ route('login') }}" id="btn-login" class="ms-4 me-3 btn btn-web-outline-primary">Masuk</a>
-        <a href="" id="btn-register" class="btn btn-web-primary">Daftar</a>
+        <a href="{{ route('register') }}" id="btn-register" class="btn btn-web-primary">Daftar</a>
       </div>
     </div>
   </div>
