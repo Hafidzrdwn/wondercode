@@ -8,6 +8,10 @@
   color: #21caa2 !important;
 }
 
+.border.border-web-primary {
+  border-color: #21caa2 !important;
+}
+
 nav.navbar {
   border-bottom: 3px solid #f58d50;
   padding: 15px 0 !important;
@@ -170,10 +174,18 @@ a.dropdown-item:hover {
 }
 
 #showHidePass {
-  top: 60%;
-  right: 12px;
+  top: 47%;
+  right: 9px;
   color: #343a40;
   cursor: pointer;
+}
+
+#showHidePass.is-invalid {
+  top: 35% !important;
+}
+
+#showHidePass.eye-login {
+  right: -4px !important;
 }
 
 .login-or::before, .login-or::after {
@@ -197,6 +209,10 @@ a.dropdown-item:hover {
   padding: 10px 16px !important;
   font-size: 15px !important;
   background-color: #f9fcff !important;
+}
+
+.form-control.is-invalid {
+  padding-right: 30px !important;
 }
 
 

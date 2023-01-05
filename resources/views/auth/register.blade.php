@@ -4,7 +4,7 @@
 <section id="registerHero">
   <div class="auth-box register-box row justify-content-center align-items-center gap-2">
     <div class="col-lg-5">
-      <img width="300" class="d-block mx-auto" src="{{ asset('assets/images/register-hero.svg') }}" alt="register hero">
+      <img width="300" src="{{ asset('assets/images/register-hero.svg') }}" alt="register hero">
       <h3 class="fw-bold mt-4">Make World More Wonderful With <span class="text-web-primary">WonderCode!</span></h3>
       <div class="row mb-2">
         <div class="col-1">
@@ -49,21 +49,41 @@
     </div>
     <div class="col-lg-6">
       <h3 class="text-center">Buat Akun Baru</h3>
-      <form action="" class="mt-5 mx-auto">
+      <form action="{{ route('registration') }}" method="POST" class="mt-5 mx-auto">
+        @csrf
         <div class="form-group row mb-3">
           <div class="col-6">
             <label for="username" class="form-label fw-bold">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username anda">
+            <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" id="username" name="username" placeholder="Masukkan username anda">
+            @error('username')
+            <div class="ps-1 invalid-feedback">
+              {{ $message }}
+            </div>
+            @enderror
           </div>
           <div class="col-6">
             <label for="email" class="form-label fw-bold">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email anda">
+            <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" name="email" placeholder="Masukkan email anda">
+            @error('email')
+            <div class="ps-1 invalid-feedback">
+              {{ $message }}
+            </div>
+            @enderror
           </div>
         </div>
-        <div class="form-group mb-4 position-relative">
-          <label for="password" class="form-label fw-bold">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan setidaknya 6 karakter">
-          <i id="showHidePass" class="fas fa-eye position-absolute fs-5"></i>
+        <div class="form-group mb-3 position-relative row">
+          <div class="col-lg-11">
+            <label for="password" class="form-label fw-bold">Password</label>
+            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Masukkan setidaknya 6 karakter">
+            @error('password')
+            <div class="ps-1 invalid-feedback">
+              {{ $message }}
+            </div>
+            @enderror
+          </div>
+          <div class="col-lg-1">
+            <i id="showHidePass" class="@error('password') is-invalid @enderror fas fa-eye border border-web-primary rounded p-2 position-absolute fs-5"></i>
+          </div>
         </div>
         <div class="mb-3">
           <button type="submit" class="btn btn-web-primary text-center w-100 py-2 fw-semibold rounded-pill">Daftar</button>

@@ -3,10 +3,22 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BasicAuthController extends Controller
 {
+    protected $msg = [
+        'required' => ':attribute tidak boleh kosong.',
+        'alpha_dash' => ':attribute tidak valid.',
+        'min' => ':attribute minimal :min karakter.',
+        'max' => ':attribute maksimal :max karakter.',
+        'unique' => ':attribute sudah terdaftar.',
+        'email' => ':attribute tidak valid.'
+    ];
+
     public function index()
     {
         return view('auth.login');
@@ -15,5 +27,23 @@ class BasicAuthController extends Controller
     public function register()
     {
         return view('auth.register');
+    }
+
+    public function registration(Request $request)
+    {
+        $validatedData = $request->validate([
+            'username' => 'required|alpha_dash|min:4|max:20|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ], $this->msg);
+
+        User::create([
+            'username' => strtolower($validatedData['username']),
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password'])
+        ]);
+
+        Alert::toast('Pendaftaran akun berhasil, silahkan login.', 'success');
+        return redirect()->route('login');
     }
 }

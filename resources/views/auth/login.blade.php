@@ -11,11 +11,14 @@
         <label for="email" class="form-label fw-bold">Username or email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Username atau email">
       </div>
-      <div class="form-group mb-3 position-relative">
-        <label for="password" class="form-label fw-bold">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan setidaknya 6 karakter">
-
-        <i id="showHidePass" class="fas fa-eye position-absolute fs-5"></i>
+      <div class="form-group mb-3 position-relative row">
+        <div class="col-lg-11">
+          <label for="password" class="form-label fw-bold">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan setidaknya 6 karakter">
+        </div>
+        <div class="col-auto">
+          <i id="showHidePass" class="@error('password') is-invalid @enderror eye-login fas fa-eye border border-web-primary rounded p-2 position-absolute fs-5"></i>
+        </div>
       </div>
       <div class="form-check mb-3">
         <input class="form-check-input" type="checkbox" name="remember" id="remember">

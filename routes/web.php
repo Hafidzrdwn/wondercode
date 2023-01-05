@@ -20,4 +20,5 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::controller(BasicAuthController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
     Route::get('/register', 'register')->name('register');
+    Route::post('/registration', 'registration')->name('registration');
 });
