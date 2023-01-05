@@ -16,7 +16,8 @@ class BasicAuthController extends Controller
         'min' => ':attribute minimal :min karakter.',
         'max' => ':attribute maksimal :max karakter.',
         'unique' => ':attribute sudah terdaftar.',
-        'email' => ':attribute tidak valid.'
+        'email' => ':attribute tidak valid.',
+        'captcha' => 'Kode captcha tidak valid.'
     ];
 
     public function index()
@@ -35,6 +36,7 @@ class BasicAuthController extends Controller
             'username' => 'required|alpha_dash|min:4|max:20|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'captcha' => 'required|captcha'
         ], $this->msg);
 
         User::create([
@@ -43,7 +45,12 @@ class BasicAuthController extends Controller
             'password' => Hash::make($validatedData['password'])
         ]);
 
-        Alert::toast('Pendaftaran akun berhasil, silahkan login.', 'success');
+        Alert::toast('Pendaftaran akun berhasil, silahkan masuk.', 'success');
         return redirect()->route('login');
+    }
+
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha' => captcha_img()]);
     }
 }

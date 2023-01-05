@@ -1,0 +1,62 @@
+html,body {
+  height: 100%;
+}
+
+body { 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.auth-box {
+  z-index: 2;
+  background-color: white;
+  width: 440px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.auth-box.login-box {
+  width: 440px;
+  padding: 35px 40px;
+}
+
+.auth-box.register-box {
+  width: 1020px;
+  padding: 40px;
+}
+
+#showHidePass {
+  top: 46%;
+  right: 1px;
+  color: #343a40;
+  cursor: pointer;
+}
+
+#showHidePass.is-invalid {
+  top: 34% !important;
+}
+
+#showHidePass.eye-login {
+  right: -4px !important;
+  top: 45%;
+}
+
+.reload-captcha {
+  top: -1px;
+  cursor: pointer;
+}
+
+.login-or::before, .login-or::after {
+  border-top: 1px solid #c8d0d6;
+  content: '';
+  flex: 1;
+}
+
+.login-or::before {
+  margin-right: 16px;
+}
+.login-or::after {
+  margin-left: 16px;
+}

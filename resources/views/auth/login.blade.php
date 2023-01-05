@@ -1,8 +1,8 @@
-@extends('layouts.auth', ['title' => 'Masuk'])
+@extends('layouts.auth', ['title' => 'Masuk', 'bg' => asset('assets/images/login-bg.webp')])
 
 @section('content')
 <section id="loginHero">
-  <div class="auth-box login-box">
+  <div class="auth-box login-box my-5 mx-auto">
     <a href="{{ route('home') }}">
       <img src="{{ asset('assets/images/logo-web.png') }}" alt="logo web" width="100" class="d-block mx-auto">
     </a>
