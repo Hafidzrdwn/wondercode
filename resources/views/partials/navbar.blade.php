@@ -49,10 +49,40 @@
           <img src="{{ asset('assets/images/search.svg') }}" alt="search-image" id="img-search">
         </button>
       </div>
-      <div class="btn-group">
-        <a href="{{ route('login') }}" id="btn-login" class="ms-4 me-3 btn btn-web-outline-primary">Masuk</a>
-        <a href="{{ route('register') }}" id="btn-register" class="btn btn-web-primary">Daftar</a>
-      </div>
+      <ul class="navbar-nav">
+        @auth
+        <li class="ms-1 nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="text-dark fw-normal">{{ Auth::user()->username }}</span>
+            <img class="ms-1 rounded-circle" id="profile-nav" width="40" src="{{ asset('assets/images/default.jpg') }}" alt="">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="">
+                <i class="fas fa-user me-2"></i> Profil saya
+              </a>
+            </li>
+            <li>
+              <div class="dropdown-divider"></div>
+            </li>
+            <li class="nav-logout">
+              <form id="formLogout" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" id="btnLogout" class="dropdown-item dropdown-item-danger text-danger">
+                  <i class="fas fa-sign-out-alt me-2"></i>
+                  Keluar
+                </button>
+              </form>
+            </li>
+          </ul>
+        </li>
+        @else
+        <div class="btn-group">
+          <a href="{{ route('login') }}" id="btn-login" class="ms-4 me-3 btn btn-web-outline-primary">Masuk</a>
+          <a href="{{ route('register') }}" id="btn-register" class="btn btn-web-primary">Daftar</a>
+        </div>
+        @endauth
+      </ul>
     </div>
   </div>
 </nav>

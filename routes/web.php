@@ -21,5 +21,7 @@ Route::controller(BasicAuthController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
     Route::get('/register', 'register')->name('register');
     Route::post('/registration', 'registration')->name('registration');
+    Route::post('/login', 'login')->name('login.auth');
     Route::get('/reload-captcha', 'reloadCaptcha')->name('reload-captcha');
+    Route::post('/logout', 'logout')->name('logout');
 });

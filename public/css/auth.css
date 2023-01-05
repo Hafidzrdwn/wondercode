@@ -18,7 +18,7 @@ body {
 }
 
 .auth-box.login-box {
-  width: 440px;
+  width: 500px;
   padding: 35px 40px;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 #showHidePass.eye-login {
-  right: -4px !important;
+  right: -1px !important;
   top: 45%;
 }
 
