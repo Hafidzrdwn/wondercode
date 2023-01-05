@@ -75,7 +75,7 @@ class BasicAuthController extends Controller
             Auth::logoutOtherDevices($request->password);
 
             Alert::toast('Halo ' . $user->username . ', Anda berhasil masuk!', 'success');
-            return redirect()->intended();
+            return redirect()->intended('forum');
         }
 
         Alert::toast('Gagal masuk, silahkan coba lagi.', 'error');
