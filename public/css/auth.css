@@ -17,7 +17,7 @@ body {
   border-radius: 8px;
 }
 
-.auth-box.login-box {
+.auth-box.login-box, .auth-box.question-box {
   width: 500px;
   padding: 35px 40px;
 }

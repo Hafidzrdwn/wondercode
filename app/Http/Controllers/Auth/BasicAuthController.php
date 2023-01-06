@@ -16,7 +16,7 @@ class BasicAuthController extends Controller
         'alpha_dash' => ':attribute tidak valid.',
         'min' => ':attribute minimal :min karakter.',
         'max' => ':attribute maksimal :max karakter.',
-        'unique' => ':attribute sudah terdaftar.',
+        'unique' => ':attribute sudah terdaftar. Coba :attribute lain.',
         'email' => ':attribute tidak valid.',
         'captcha' => 'Kode captcha tidak valid.',
         'usernameEmail.required' => 'Username atau email tidak boleh kosong.'
@@ -36,7 +36,7 @@ class BasicAuthController extends Controller
     {
         $validatedData = $request->validate([
             'username' => 'required|alpha_dash|min:4|max:20|unique:users',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:6',
             'captcha' => 'required|captcha'
         ], $this->msg);
@@ -62,6 +62,10 @@ class BasicAuthController extends Controller
         $credentials[$this->getField($request->usernameEmail)] = $request->usernameEmail;
 
         $remember = ($request->has('remember')) ? true : false;
+        if ($this->checkSocialAccounts($credentials) > 0) {
+            Alert::error('Sepertinya anda sign up menggunakan Social Login. Harap login menggunakan Social Login dimana akun anda dibuat.');
+            return redirect()->back();
+        }
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
@@ -71,6 +75,8 @@ class BasicAuthController extends Controller
             )->orWhere(
                 ["username" => $request->usernameEmail]
             )->first();
+
+
             Auth::login($user, $remember);
             Auth::logoutOtherDevices($request->password);
 
@@ -104,5 +110,13 @@ class BasicAuthController extends Controller
         Alert::toast('Anda telah berhasil keluar.', 'success');
 
         return redirect()->route('login');
+    }
+
+    private function checkSocialAccounts($user)
+    {
+        $param = (array_key_exists('email', $user)) ? 'email' : 'username';
+        $user = User::where($param, $user[$param])->first();
+
+        return $user->socialAccounts->count();
     }
 }

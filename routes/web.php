@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\BasicAuthController;
 use App\Http\Controllers\Auth\GoogleAuthController;
+use App\Http\Controllers\Auth\SocialAuthServiceController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -35,5 +36,7 @@ Route::controller(BasicAuthController::class)->group(function () {
     });
 });
 
-Route::get('auth/google/redirect', [GoogleAuthController::class, "redirect"])->name('google.redirect');
-Route::get('auth/google/callback', [GoogleAuthController::class, "callback"]);
+Route::get('auth/google/redirect', [GoogleAuthController::class, "redirect"])->name('google.redirect')->middleware('guest');
+Route::get('auth/google/callback', [GoogleAuthController::class, "callback"])->middleware('guest');
+Route::get('auth/social/question', [SocialAuthServiceController::class, "question"])->name('social.question');
+Route::post('auth/social/question', [SocialAuthServiceController::class, "questionStore"])->name('social.question.store');
