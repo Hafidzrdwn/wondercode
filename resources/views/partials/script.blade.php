@@ -1,7 +1,32 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2e160f1ac0.js" crossorigin="anonymous"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
+<script>
+  // confirm logout with sweet alert jquery
+  $(document).ready(function() {
+    $('#btnLogout').click(function(e) {
+      e.preventDefault();
+      Swal.fire({
+        title: 'Apakah anda yakin?'
+        , text: "Anda akan keluar dari akun anda!"
+        , icon: 'question'
+        , reverseButtons: true
+        , showCancelButton: true
+        , confirmButtonColor: '#21caa2'
+        , cancelButtonColor: '#dc3545'
+        , confirmButtonText: 'Yakin!'
+        , cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $('#formLogout').submit();
+        }
+      })
+    });
+  })
+
+</script>
 <script>
   // navbar
   const dt = document.querySelector('.dropdown-toggle');

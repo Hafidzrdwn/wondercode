@@ -33,10 +33,19 @@ ul.dropdown-menu > li > a {
   padding-bottom: 10px !important;
 }
 
-a.dropdown-item:hover {
+a.dropdown-item:hover, a.dropdown-item:focus {
   color: #333 !important;
   background-color: #06ECB6 !important;
   /* background-color: rgba(6, 236, 182, 15%) !important; */
+}
+a.dropdown-item:active {
+  background-color: #e9ecef !important;
+  color: #333 !important;
+}
+
+button.dropdown-item-danger:active {
+  background-color: #e9ecef !important;
+  color: #333 !important;
 }
 
 #search {
