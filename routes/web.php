@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\BasicAuthController;
+use App\Http\Controllers\Auth\GithubAuthController;
 use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
@@ -34,6 +35,10 @@ Route::controller(BasicAuthController::class)->group(function () {
         Route::get('/reload-captcha', 'reloadCaptcha')->name('reload-captcha');
     });
 });
-
-Route::get('auth/google/redirect', [GoogleAuthController::class, "redirect"])->name('google.redirect');
-Route::get('auth/google/callback', [GoogleAuthController::class, "callback"]);
+    //Google
+    Route::get('auth/google/redirect', [GoogleAuthController::class, "redirect"])->name('google.redirect');
+    Route::get('auth/google/callback', [GoogleAuthController::class, "callback"]);
+    
+    //Github
+    Route::get('/auth/github/redirect', [GithubAuthController::class, "redirect"])->name('github.redirect');
+    Route::get('/auth/github/callback', [GithubAuthController::class, "callback"]);
