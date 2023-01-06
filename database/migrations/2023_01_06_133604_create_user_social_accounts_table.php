@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user_social_accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique()->nullable();
-            $table->string('email')->unique();
-            $table->string('password')->nullable();
-            $table->boolean('is_admin')->default(false);
-            $table->rememberToken();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('social_id')->nullable();
+            $table->string('auth_type')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user_social_accounts');
     }
 };

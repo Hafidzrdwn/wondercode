@@ -22,8 +22,6 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
-        'social_id',
-        'auth_type'
     ];
 
     /**
@@ -44,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function socialAccounts()
+    {
+        return $this->hasMany(UserSocialAccount::class);
+    }
 }
