@@ -44,7 +44,7 @@
         <small>atau masuk dengan</small>
       </div>
       <div class="mt-3 mb-4 gap-3 d-flex justify-content-between align-items-center">
-        <a href="" class="btn btn-light w-50 py-2 shadow-sm">
+        <a href="{{ route('google.redirect') }}" class="btn btn-light w-50 py-2 shadow-sm">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M21.6 12.23c0-.68-.05-1.36-.17-2.03H12v3.85h5.4a4.63 4.63 0 0 1-2 3.04v2.5h3.23c1.89-1.75 2.98-4.32 2.98-7.36Z" fill="#4285F4"></path>
             <path d="M12 22c2.7 0 4.97-.88 6.63-2.41l-3.22-2.5c-.9.6-2.06.95-3.4.95a5.99 5.99 0 0 1-5.62-4.12H3.06v2.57A10 10 0 0 0 12 22Z" fill="#34A853"></path>

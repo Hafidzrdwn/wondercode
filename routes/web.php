@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\BasicAuthController;
+use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +34,6 @@ Route::controller(BasicAuthController::class)->group(function () {
         Route::get('/reload-captcha', 'reloadCaptcha')->name('reload-captcha');
     });
 });
+
+Route::get('auth/google/redirect', [GoogleAuthController::class, "redirect"])->name('google.redirect');
+Route::get('auth/google/callback', [GoogleAuthController::class, "callback"]);
