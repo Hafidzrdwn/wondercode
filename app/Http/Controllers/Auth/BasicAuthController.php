@@ -47,8 +47,7 @@ class BasicAuthController extends Controller
             'password' => Hash::make($validatedData['password'])
         ]);
 
-        Alert::toast('Pendaftaran akun berhasil, silahkan masuk.', 'success');
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', '<strong>Pendaftaran akun berhasil!</strong> silahkan masuk.');
     }
 
     public function login(Request $request)
@@ -63,8 +62,7 @@ class BasicAuthController extends Controller
 
         $remember = ($request->has('remember')) ? true : false;
         if ($this->checkSocialAccounts($credentials) > 0) {
-            Alert::error('Sepertinya anda sign up menggunakan Social Login. Harap login menggunakan Social Login dimana akun anda dibuat.');
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Sepertinya anda sign up menggunakan <strong>Social Login</strong>. Harap login menggunakan <strong>Social Login</strong> dimana akun anda dibuat.');
         }
 
         if (Auth::attempt($credentials, $remember)) {
@@ -84,8 +82,7 @@ class BasicAuthController extends Controller
             return redirect()->intended('forum');
         }
 
-        Alert::toast('Gagal masuk, silahkan coba lagi.', 'error');
-        return redirect()->route('login');
+        return redirect()->route('login')->with('error', '<strong>Gagal masuk</strong>, silahkan coba lagi.');
     }
 
     private function getField($req)
@@ -107,9 +104,7 @@ class BasicAuthController extends Controller
 
         request()->session()->regenerateToken();
 
-        Alert::toast('Anda telah berhasil keluar.', 'success');
-
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', '<strong>Sampai jumpa</strong>, Anda telah keluar.');
     }
 
     private function checkSocialAccounts($user)

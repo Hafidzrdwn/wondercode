@@ -6,7 +6,13 @@
     <a href="{{ route('home') }}">
       <img src="{{ asset('assets/images/logo-web.png') }}" alt="logo web" width="100" class="d-block mx-auto">
     </a>
-    <form action="{{ route('login.auth') }}" method="POST" class="mt-5">
+    @if ($msg = Session::get('success'))
+    <x-alert type="success" :message="$msg"></x-alert>
+    @endif
+    @if ($msg = Session::get('error'))
+    <x-alert type="danger" :message="$msg"></x-alert>
+    @endif
+    <form action="{{ route('login.auth') }}" method="POST" class="@if(Session::has('success') || Session::has('error')) mt-0 @else mt-5 @endif">
       @csrf
       <div class="form-group mb-3">
         <label for="usernameEmail" class="form-label fw-bold">Username atau email</label>
@@ -60,11 +66,23 @@
           </svg>
           <small class="ms-1">Log in with Github</small>
         </a>
-    </div>
+      </div>
       <p class="small text-center text-secondary m-0">Belum memiliki akun?
         <a href="{{ route('register') }}" class="text-web-primary">Daftar</a>
       </p>
     </form>
   </div>
 </section>
+@endsection
+
+@section('script')
+<script>
+  $(document).ready(function() {
+    $('.alert > button.btn-close').click(function() {
+      $('form').removeClass('mt-0');
+      $('form').addClass('mt-5');
+    });
+  });
+
+</script>
 @endsection
