@@ -9,49 +9,39 @@
     <div class="card">
         <div class="card-body">
             <table class="table table-hover">
-                <thead>
+                <thead class="text-center">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
+                    @foreach ($users as $user)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>
-                            <a href="#" class="btn btn-icon btn-success"><i class="far fa-edit"></i></a>
+                            @if($user->is_admin == 1)
+                            <div class="badge bg-success text-dark">Admin</div>
+                            @else
+                            <div class="badge bg-secondary text-dark">User</div>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-icon btn-success"><i class="far fa-edit"></i></a>
                             <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a>
-                            <a href="#" class="btn btn-icon btn-warning"><i class="fas fa-exclamation-triangle"></i></a>
+                            <form class="d-inline" action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('Yakin?')" class="btn btn-icon btn-warning"><i class="fas fa-exclamation-triangle"></i></button>
+                            </form>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>
-                            <a href="#" class="btn btn-icon btn-success"><i class="far fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a>
-                            <a href="#" class="btn btn-icon btn-warning"><i class="fas fa-exclamation-triangle"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>
-                            <a href="#" class="btn btn-icon btn-success"><i class="far fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a>
-                            <a href="#" class="btn btn-icon btn-warning"><i class="fas fa-exclamation-triangle"></i></a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
