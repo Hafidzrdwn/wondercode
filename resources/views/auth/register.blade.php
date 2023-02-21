@@ -62,7 +62,7 @@
       </div>
       <div class="form-group mb-3">
         <label for="email" class="form-label fw-bold">Email</label>
-        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" name="email" placeholder="Masukkan email anda">
+        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', request()->query('email')) }}" id="email" name="email" placeholder="Masukkan email anda">
         @error('email')
         <div class="ps-1 invalid-feedback">
           {{ $message }}

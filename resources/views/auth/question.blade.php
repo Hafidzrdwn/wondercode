@@ -18,8 +18,17 @@
       @csrf
       <div class="form-group mb-3">
         <label for="username" class="form-label fw-bold">Pilih Username</label>
-        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Masukkan username.." value="{{ old('username') }}">
+        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Masukkan username" value="{{ old('username') }}">
         @error('username')
+        <div class="ps-1 invalid-feedback">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
+      <div class="form-group mb-3">
+        <label for="username" class="form-label fw-bold">Masukkan Lokasi Anda</label>
+        <input type="text" class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" name="lokasi" placeholder="Masukkan format : Kota, Provinsi, Negara" value="{{ old('lokasi') }}">
+        @error('lokasi')
         <div class="ps-1 invalid-feedback">
           {{ $message }}
         </div>

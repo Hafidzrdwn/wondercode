@@ -41,10 +41,14 @@ class BasicAuthController extends Controller
             'captcha' => 'required|captcha'
         ], $this->msg);
 
-        User::create([
+        $user = User::create([
             'username' => strtolower($validatedData['username']),
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password'])
+        ]);
+
+        $user->profile()->create([
+            'avatar' => 'profiles/default.jpg',
         ]);
 
         return redirect()->route('login')->with('success', '<strong>Pendaftaran akun berhasil!</strong> silahkan masuk.');
@@ -74,12 +78,11 @@ class BasicAuthController extends Controller
                 ["username" => $request->usernameEmail]
             )->first();
 
-
             Auth::login($user, $remember);
             Auth::logoutOtherDevices($request->password);
 
             Alert::toast('Halo ' . $user->username . ', Anda berhasil masuk!', 'success');
-            return redirect()->intended('forum');
+            return redirect()->route('forum');
         }
 
         return redirect()->route('login')->with('error', '<strong>Gagal masuk</strong>, silahkan coba lagi.');

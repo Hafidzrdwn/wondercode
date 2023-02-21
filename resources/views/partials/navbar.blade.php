@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
       <img width="75" class="me-5" src="{{ asset('assets/images/logo-web.png') }}" alt="">
@@ -54,11 +54,11 @@
         <li class="ms-1 nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="text-dark fw-normal">{{ Auth::user()->username }}</span>
-            <img class="ms-1 rounded-circle" id="profile-nav" width="40" src="{{ asset('assets/images/default.jpg') }}" alt="">
+            <img class="ms-1 rounded-circle border" id="profile-nav" width="42" src="{{ auth()->user()->profile->avatar() }}" alt="foto profil">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item" href="{{ route('user.profile', auth()->user()->username) }}">
                 <i class="fas fa-user me-2"></i> Profil saya
               </a>
             </li>

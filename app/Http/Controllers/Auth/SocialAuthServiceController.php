@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserSocialAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SocialAuthServiceController extends Controller
@@ -26,8 +27,10 @@ class SocialAuthServiceController extends Controller
                 $user = User::create([
                     'username' => null,
                     'email' => $socialUser->getEmail(),
-                    'password' => null,
+                    'password' => Hash::make(env('PASSWORD_GENERATE_SOCIAL')),
                 ]);
+            } else {
+                return redirect()->route('login')->with('error', 'Anda sudah pernah membuat akun dengan <strong>Email / Username</strong> tersebut. <br>Harap <strong>login</strong> kembali!');
             }
 
             $user->socialAccounts()->create([
@@ -36,13 +39,17 @@ class SocialAuthServiceController extends Controller
             ]);
         }
 
+        if (!$user->profile) {
+            $user->profile()->create([
+                'name' => $socialUser->getName(),
+                'avatar' => $socialUser->getAvatar(),
+            ]);
+        }
+
         if (is_null($user->username)) {
             return redirect()->route('social.question', ['name' => $socialUser->getName(), 'email' => $socialUser->getEmail()]);
         } else {
-            Auth::login($user, true);
-
-            Alert::toast('Halo ' . $user->username . ', Anda berhasil masuk!', 'success');
-            return redirect()->route('forum');
+            return $this->login_process($user);
         }
     }
 
@@ -69,6 +76,7 @@ class SocialAuthServiceController extends Controller
     {
         $request->validate([
             'username' => 'required|alpha_dash|min:4|max:20|unique:users',
+            'lokasi' => 'required',
         ], [
             'required' => ':attribute tidak boleh kosong.',
             'alpha_dash' => ':attribute tidak valid.',
@@ -81,9 +89,21 @@ class SocialAuthServiceController extends Controller
         $user->username = strtolower($request->username);
         $user->save();
 
-        Auth::login($user, true);
+        $user->profile()->update([
+            'address' => $request->lokasi
+        ]);
 
-        Alert::toast('Halo ' . $user->username . ', Anda berhasil masuk!', 'success');
+        return $this->login_process($user);
+    }
+
+    public function login_process($data)
+    {
+        request()->session()->regenerate();
+
+        Auth::login($data, true);
+        Auth::logoutOtherDevices(env('PASSWORD_GENERATE_SOCIAL'));
+
+        Alert::toast('Halo ' . $data->username . ', Anda berhasil masuk!', 'success');
         return redirect()->route('forum');
     }
 }

@@ -1,0 +1,69 @@
+.box {
+  border-radius: 12px;
+}
+
+.cover-image {
+  height: 235px;
+  background-size: cover !important;
+}
+
+.edit-cover-img {
+  top: 16px;
+  right: 16px;
+  font-size: 15px !important;
+  padding: 11px;
+  color: #333;
+  cursor: pointer;
+  background-color: #e9ecef;
+}
+
+.avatar {
+  width: 170px;
+  background-size: cover !important;
+  top: -138px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px;
+}
+
+.detail-profile {
+  padding-bottom: 27px;
+}
+
+.followable-detail {
+  margin-top: 28px;
+}
+
+.followable-detail > a {
+  transition: .4s;
+}
+.followable-detail > a > p {
+  color: #495057 !important;
+} 
+.followable-detail > a:hover {
+  color: #21caa2 !important;
+}
+
+.right-box {
+  padding-top: 22px;
+}
+
+.right-box > a {
+  top: 14px;
+  right: 24px;
+}
+
+.btn-action > a{
+  padding: 7px 14px !important;
+  font-size: smaller;
+}
+
+/* Friends */
+.friends-profile {
+  width: 55px;
+}
+.friends-icon-eye {
+  font-size: 24px;
+  right: 20px;
+  top: 30%;
+}
