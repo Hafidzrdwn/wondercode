@@ -55,17 +55,15 @@ Route::get('/auth/github/callback', [GithubAuthController::class, "callback"])->
 Route::get('/auth/social/question', [SocialAuthServiceController::class, "question"])->name('social.question')->middleware('guest');
 Route::post('/auth/social/question', [SocialAuthServiceController::class, "questionStore"])->name('social.question.store')->middleware('guest');
 
-<<<<<<< HEAD
 Route::middleware('auth')->group(function () {
 
     Route::get('/{user:username}', [ProfileController::class, 'profile'])->name('user.profile');
-=======
-// Auth Admin 
-Route::get('/admin', [AuthAdminController::class, "index"])->name('auth.admin')->middleware('guest');
-Route::post('/admin', [AuthAdminController::class, "login"])->name('auth.admin.login');
 
-// Admin Pages
-Route::middleware('auth')->group(function(){
+    // Auth Admin 
+    Route::get('/admin', [AuthAdminController::class, "index"])->name('auth.admin')->middleware('guest');
+    Route::post('/admin', [AuthAdminController::class, "login"])->name('auth.admin.login');
+
+    // Admin Pages
     Route::prefix('admin')->group(function(){
         
         Route::resource('dashboard', DashboardController::class);
@@ -74,5 +72,4 @@ Route::middleware('auth')->group(function(){
         Route::resource('user-medsos', UserMedsosController::class);
     
     });
->>>>>>> cb7550b1ae9d53864e8e42ea636d0b36754c9de3
 });
