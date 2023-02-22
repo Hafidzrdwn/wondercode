@@ -23,13 +23,12 @@
   'Swift'
   ];
   @endphp
-  {{-- cara nyeluk image e engkok garek jupuken teko variabel $t misal {{ asset('assets/images/icons/'. $t . '.svg') }} --}}
-  {{-- ojok lali jeneng file image e podokno koyok seng nde array cek dinamis --}}
+
   <div class="row mt-4 gap-3 justify-content-center">
     @foreach ($tech as $t)
-    <div class="tech-card p-3 py-2 rounded-2 border border-web-primary d-flex align-items-center justify-content-center">
-      <img src="{{ asset('assets/images/logo-web.png') }}" class="w-100" alt="">
-    </div>
+      <div class="tech-card p-3 py-2 rounded-2 border border-web-primary d-flex align-items-center justify-content-center">
+        <img src="{{ asset('assets/icons/'. $t . '.svg') }}"  alt="">
+      </div>
     @endforeach
   </div>
 
