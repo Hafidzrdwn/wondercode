@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('template-admin/node_modules/weathericons/css/weather-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template-admin/node_modules/weathericons/css/weather-icons-wind.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template-admin/node_modules/summernote/dist/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{ asset('template-admin/node_modules/codemirror/lib/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ asset('template-admin/node_modules/codemirror/theme/duotone-dark.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('template-admin/assets/css/style.css') }}">
@@ -65,7 +67,10 @@
     <script src="{{ asset('template-admin/node_modules/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
     <script src="{{ asset('template-admin/node_modules/summernote/dist/summernote-bs4.js') }}"></script>
     <script src="{{ asset('template-admin/node_modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+    <script src="{{ asset('template-admin/node_modules/codemirror/lib/codemirror.js') }}"></script>
+    <script src="{{ asset('template-admin/node_modules/codemirror/mode/javascript/javascript.js') }}"></script>
 
+    
     <!-- Template JS File -->
     <script src="{{ asset('template-admin/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('template-admin/assets/js/custom.js') }}"></script>

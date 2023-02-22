@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\Admin\Auth\AuthAdminController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Master\BlogController;
+use App\Http\Controllers\Admin\Master\JawabanController;
+use App\Http\Controllers\Admin\Master\PertanyaanController;
+use App\Http\Controllers\Admin\Master\ProjectController;
 use App\Http\Controllers\Admin\Master\UserController;
 use App\Http\Controllers\Admin\master\UserMedsosController;
 use App\Http\Controllers\Admin\master\UserProfileController;
@@ -56,20 +60,25 @@ Route::get('/auth/social/question', [SocialAuthServiceController::class, "questi
 Route::post('/auth/social/question', [SocialAuthServiceController::class, "questionStore"])->name('social.question.store')->middleware('guest');
 
 Route::middleware('auth')->group(function () {
-
-    Route::get('/{user:username}', [ProfileController::class, 'profile'])->name('user.profile');
-
-    // Auth Admin 
-    Route::get('/admin', [AuthAdminController::class, "index"])->name('auth.admin')->middleware('guest');
-    Route::post('/admin', [AuthAdminController::class, "login"])->name('auth.admin.login');
-
-    // Admin Pages
-    Route::prefix('admin')->group(function(){
-        
-        Route::resource('dashboard', DashboardController::class);
-        Route::resource('user', UserController::class);
-        Route::resource('user-profile', UserProfileController::class);
-        Route::resource('user-medsos', UserMedsosController::class);
     
-    });
+    Route::get('/{user:username}', [ProfileController::class, 'profile'])->name('user.profile');
+    
+    // Auth Admin 
+    Route::post('/admin', [AuthAdminController::class, "login"])->name('auth.admin.login');
+    
+});
+Route::get('/admin', [AuthAdminController::class, "index"])->name('auth.admin')->middleware('guest');
+
+// Admin Pages
+Route::prefix('admin')->group(function(){
+    
+    Route::resource('dashboard', DashboardController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('user-profile', UserProfileController::class);
+    Route::resource('user-medsos', UserMedsosController::class);
+    Route::resource('jawaban', JawabanController::class);
+    Route::resource('pertanyaan', PertanyaanController::class);
+    Route::resource('blog', BlogController::class);
+    Route::resource('project', ProjectController::class);
+    
 });

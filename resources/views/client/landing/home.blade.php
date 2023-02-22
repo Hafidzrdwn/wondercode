@@ -62,6 +62,10 @@
     height: 100px
   }
 
+  .tech-card>img{
+    width: 55px !important;
+  }
+
   footer {
     border-top: 3px solid #f58d50;
   }
