@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Admin\Master;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class UserController extends Controller
+class JawabanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all()->sortByDesc('is_admin');
-        return view('admin.MasterUser.index', compact('users'));
+        return view('admin.MasterJawaban.index');
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -62,8 +57,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = User::where('id', $id)->first();
-        return view('admin.MasterUser.edit', compact('users'));
+        //
     }
 
     /**
@@ -75,16 +69,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::find($id)->update([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'is_admin' => $request->is_admin,
-        ]);
-
-        Alert::toast('Data Akun Berhasil di Update', 'success');
-
-        return redirect()->route('user.index');
+        //
     }
 
     /**
@@ -95,9 +80,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)
-        ->delete();
-        Alert::toast('Akun Berhasil Di Hapus', 'warning');
-        return redirect()->route('user.index');
+        //
     }
 }
