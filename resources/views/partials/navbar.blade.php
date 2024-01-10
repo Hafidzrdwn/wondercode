@@ -44,7 +44,7 @@
         </li>
       </ul>
       <div class="search-box">
-        <input class="search-input" type="text" name="" placeholder="Cari apa saja..." autocomplete="off">
+        <input class="search-input" type="text" name="" placeholder="Cari pertanyaan, artikel, dll" autocomplete="off">
         <button class="search-btn" href="#">
           <img src="{{ asset('assets/images/search.svg') }}" alt="search-image" id="img-search">
         </button>
@@ -60,6 +60,11 @@
             <li>
               <a class="dropdown-item" href="{{ route('user.profile', auth()->user()->username) }}">
                 <i class="fas fa-user me-2"></i> Profil saya
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{ route('settings') }}">
+                <i class="fas fa-cog me-2"></i> Pengaturan
               </a>
             </li>
             <li>

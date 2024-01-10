@@ -34,9 +34,12 @@
       <p>Jl. Smea No.4, Wonokromo, Kec. Wonokromo, Kota SBY, Jawa Timur 60243</p>
     </div>
   </div>
-
-  <p class="text-center mt-5">
-    Copyright © 2023 WonderCode , Made with <span class="text-danger">❤</span> by @hafidzrdwn & @dhamarasp
-
-  </p>
 </footer>
+<div class="end-footer bg-dark p-5 text-center" style="color:#a3a3a3;">
+  <p class="mb-2">
+    Copyright © 2023 WonderCode. All rights reserved
+  </p>
+  <p class="m-0">
+    Made with <span class="text-danger">❤</span> by @hafidzrdwn & @dhamarasp in 🇮🇩
+  </p>
+</div>

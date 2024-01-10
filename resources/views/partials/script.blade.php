@@ -6,6 +6,13 @@
 <script>
   // confirm logout with sweet alert jquery
   $(document).ready(function() {
+
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
     $('#btnLogout').click(function(e) {
       e.preventDefault();
       Swal.fire({
@@ -86,12 +93,20 @@
     });
   }
 
-
   document.addEventListener('click', function(e) {
     if (e.target !== dt) {
       dt.classList.remove('active');
       dm.classList.remove('show');
     }
   });
+
+  let btnBackToTop = document.getElementById("btnBackToTop");
+
+  btnBackToTop.addEventListener("click", backToTop);
+
+  function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 
 </script>

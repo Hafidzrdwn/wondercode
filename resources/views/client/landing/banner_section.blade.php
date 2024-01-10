@@ -27,7 +27,7 @@
   {{-- ojok lali jeneng file image e podokno koyok seng nde array cek dinamis --}}
   <div class="row mt-4 gap-3 justify-content-center">
     @foreach ($tech as $t)
-    <div class="tech-card p-3 py-2 rounded-2 border border-web-primary d-flex align-items-center justify-content-center">
+    <div class="tech-card p-3 py-2 rounded-2 border border-web-primary d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
       <img src="{{ asset('assets/images/logo-web.png') }}" class="w-100" alt="">
     </div>
     @endforeach

@@ -27,7 +27,10 @@ class UserProfile extends Model
 
     public function cover()
     {
-        // return asset('storage/' . $this->cover);
-        return $this->cover;
+        if ($this->cover_image != 'cover.webp') {
+            return asset('storage/' . $this->cover_image);
+        } else {
+            return asset('storage/covers/' . $this->cover_image);
+        }
     }
 }

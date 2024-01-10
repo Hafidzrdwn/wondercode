@@ -19,11 +19,12 @@
 
 .avatar {
   width: 170px;
-  background-size: cover !important;
   top: -138px;
   left: 50%;
   transform: translateX(-50%);
   padding: 4px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .detail-profile {
@@ -66,4 +67,31 @@
   font-size: 24px;
   right: 20px;
   top: 30%;
+}
+
+.detail-additional-box > .d-flex > .detail > p {
+  color: #495057;
+}
+
+.text-change:hover {
+  text-decoration: underline;
+}
+
+.preview {
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border: 1.5px solid black;
+  border-radius: 50%;
+}
+.cropper-view-box {
+  box-shadow: 0 0 0 1px #39f;
+  border-radius: 50%;
+  outline: 0;
+}
+.cropper-face {
+  background-color: inherit !important;
+}
+.cropper-view-box {
+  outline: inherit !important;
 }
