@@ -20,7 +20,7 @@
                         <input type="text" id="email" name="email" value="{{ $users->email }}" class="form-control">
                         <br>
                         <label for="password">Password</label>
-                        <input type="text" id="password" name="password" value="{{ $users->password }}" class="form-control">
+                        <input type="text" id="password" name="password" placeholder="Masukkan Password Baru" class="form-control">
                         <br>
                         <label for="status">Admin</label>
                         <select class="form-control" name="is_admin" id="status">

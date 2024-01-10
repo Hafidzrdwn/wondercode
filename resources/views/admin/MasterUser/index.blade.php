@@ -32,18 +32,27 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-icon btn-success"><i class="far fa-edit"></i></a>
+                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-icon btn-success"><i
+                                    class="far fa-edit"></i></a>
                             <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a>
                             <form class="d-inline" action="{{ route('user.destroy', $user->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Yakin?')" class="btn btn-icon btn-warning"><i class="fas fa-exclamation-triangle"></i></button>
+                                <button type="submit" onclick="return confirm('Yakin?')"
+                                    class="btn btn-icon btn-warning"><i
+                                        class="fas fa-exclamation-triangle"></i></button>
                             </form>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Code</label>
+                <div class="col-sm-12 col-md-7">
+                    <textarea class="codeeditor"></textarea>
+                </div>
+            </div>
         </div>
     </div>
 </div>
